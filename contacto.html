@@ -1,0 +1,112 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Contacto</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+     <!-- Barra superior -->
+    <div class="barra-superior">
+        ¡Bienvenido a Papelería Chelito!
+    </div>
+
+    <!-- Header -->
+    <header>
+
+        <img src="imagenes/logo.png" alt="Logo Papelería Chelito">
+
+        <div class="logo">
+            <h1>Papelería Chelito</h1>
+            <p>Tu papelería de siempre</p>
+        </div>
+
+        <div class="iconos">
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+    </header>
+
+    <!-- Menú -->
+    <nav>
+        <ul class="menu">
+
+            <li class="dropdown">
+                <a href="index.html">Inicio</a>
+
+                <ul class="submenu">
+                    <li><a href="Quienes_somos.html">¿Quiénes Somos?</a></li>
+                    <li><a href="Mision.html">Misión</a></li>
+                    <li><a href="Vision.html">Visión</a></li>
+                </ul>
+            </li>
+
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="novedades.html">Novedades</a></li>
+            <li><a href="marcas.html">Marcas</a></li>
+            <li><a href="contacto.html">Contactanos</a></li>
+            <li><a href="Direccion.html">Dirección</a></li>
+
+        </ul>
+    </nav>
+
+    <main>
+        <div class="contenido-pagina">
+
+            <h2>Déjanos tu opinión ¡Gracias!</h2>
+
+            <form action="http://localhost:3000/guardar" method="POST" class="formulario">
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="producto">Producto que evalúas:</label>
+                <input type="text" id="producto" name="producto">
+
+                <label for="opinion">¿Qué te pareció el producto?</label>
+                <textarea id="opinion" name="opinion" rows="4" required></textarea>
+
+                <div style="margin-top:15px;">
+                    <label>
+                        <input type="checkbox" id="mostrarSugerencia">
+                        Deseo agregar una sugerencia o crítica
+                    </label>
+                </div>
+
+                <div id="contenedorSugerencia" style="display:none; margin-top:15px;">
+                    <label for="sugerencia">Sugerencia o crítica:</label>
+                    <textarea id="sugerencia" name="sugerencia" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Enviar</button>
+
+            </form>
+
+            <a href="index.html" class="btn" style="display:inline-block; margin-top:20px; text-align:center;">
+                Regresar
+            </a>
+
+        </div>
+    </main>
+
+    <script>
+        const check = document.getElementById("mostrarSugerencia");
+        const contenedor = document.getElementById("contenedorSugerencia");
+
+        check.addEventListener("change", function () {
+            if (this.checked) {
+                contenedor.style.display = "block";
+            } else {
+                contenedor.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>

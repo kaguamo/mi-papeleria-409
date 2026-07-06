@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -7,6 +8,8 @@ const app = express();
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+// Permitir que Express sirva los archivos HTML, CSS e imágenes
+app.use(express.static(path.join(__dirname)));
 
 // Conexión a MongoDB
 mongoose.connect("mongodb://localhost:27017/formulario")
@@ -51,7 +54,8 @@ app.post("/guardar", async (req, res) => {
 
         await nuevoContacto.save();
 
-        res.send("Datos guardados correctamente en contactos");
+// Regresa al formulario indicando que el guardado fue exitoso
+res.redirect("/gracias.html");
 
     } catch (error) {
 

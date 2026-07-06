@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Formulario de Contacto</title>
@@ -6,7 +8,8 @@
 </head>
 
 <body>
-     <!-- Barra superior -->
+
+    <!-- Barra superior -->
     <div class="barra-superior">
         ¡Bienvenido a Papelería Chelito!
     </div>
@@ -47,13 +50,14 @@
             <li><a href="ofertas.html">Ofertas</a></li>
             <li><a href="novedades.html">Novedades</a></li>
             <li><a href="marcas.html">Marcas</a></li>
-            <li><a href="contacto.html">Contactanos</a></li>
+            <li><a href="contacto.html">Contáctanos</a></li>
             <li><a href="Direccion.html">Dirección</a></li>
 
         </ul>
     </nav>
 
     <main>
+
         <div class="contenido-pagina">
 
             <h2>Déjanos tu opinión ¡Gracias!</h2>
@@ -70,43 +74,111 @@
                 <input type="text" id="producto" name="producto">
 
                 <label for="opinion">¿Qué te pareció el producto?</label>
-                <textarea id="opinion" name="opinion" rows="4" required></textarea>
+
+                <select id="opinion" name="opinion" required>
+
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="Excelente">Excelente</option>
+                    <option value="Bueno">Bueno</option>
+                    <option value="Regular">Regular</option>
+                    <option value="Malo">Malo</option>
+                    <option value="No lo recomiendo">No lo recomiendo</option>
+
+                </select>
 
                 <div style="margin-top:15px;">
+
                     <label>
+
                         <input type="checkbox" id="mostrarSugerencia">
+
                         Deseo agregar una sugerencia o crítica
+
                     </label>
+
                 </div>
 
                 <div id="contenedorSugerencia" style="display:none; margin-top:15px;">
+
                     <label for="sugerencia">Sugerencia o crítica:</label>
+
                     <textarea id="sugerencia" name="sugerencia" rows="4"></textarea>
+
                 </div>
 
-                <button type="submit" class="btn">Enviar</button>
+                <button type="submit" class="btn">
+
+                    Enviar
+
+                </button>
 
             </form>
 
             <a href="index.html" class="btn" style="display:inline-block; margin-top:20px; text-align:center;">
+
                 Regresar
+
             </a>
 
         </div>
+
     </main>
 
-    <script>
-        const check = document.getElementById("mostrarSugerencia");
-        const contenedor = document.getElementById("contenedorSugerencia");
+   <!-- Ventana de confirmación -->
+<div id="modalExito" class="modal">
 
-        check.addEventListener("change", function () {
-            if (this.checked) {
-                contenedor.style.display = "block";
-            } else {
-                contenedor.style.display = "none";
-            }
-        });
-    </script>
+    <div class="modal-contenido">
+
+        <h2>✔ Datos guardados</h2>
+
+        <p>Los datos se guardaron correctamente en contactos.</p>
+
+        <button onclick="cerrarModal()">
+            Aceptar
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+// Script que ya tenías
+const check = document.getElementById("mostrarSugerencia");
+const contenedor = document.getElementById("contenedorSugerencia");
+
+check.addEventListener("change", function () {
+
+    if (this.checked) {
+
+        contenedor.style.display = "block";
+
+    } else {
+
+        contenedor.style.display = "none";
+
+    }
+
+});
+
+// NUEVO CÓDIGO
+function cerrarModal(){
+
+    document.getElementById("modalExito").style.display = "none";
+
+    window.history.replaceState({}, document.title, "contacto.html");
+
+}
+
+const parametros = new URLSearchParams(window.location.search);
+
+if(parametros.get("guardado") == "1"){
+
+    document.getElementById("modalExito").style.display = "block";
+
+}
+
+</script>
 
 </body>
 </html>

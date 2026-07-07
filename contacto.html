@@ -105,11 +105,13 @@ Déjanos tu opinión ¡Gracias!
 
 </h2>
 
-<form action="http://localhost:3000/guardar"
+<form name="contacto"
+      method="POST"
+      data-netlify="true"
+      action="gracias.html"
+      class="formulario">
 
-method="POST"
-
-class="formulario">
+    <input type="hidden" name="form-name" value="contacto">
 
 <label for="nombre">
 
